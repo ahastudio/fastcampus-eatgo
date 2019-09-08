@@ -60,7 +60,6 @@ export default {
   },
   async createReservation({ state, dispatch }, restaurantId) {
     const { reservation } = state;
-    console.log(reservation);
     try {
       await post(`/restaurants/${restaurantId}/reservations`, reservation);
       dispatch('resetReservation');
