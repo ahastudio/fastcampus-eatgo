@@ -1,5 +1,7 @@
 # EatGo
 
+[![Build Status](https://travis-ci.org/ahastudio/fastcampus-eatgo.svg?branch=master)](https://travis-ci.org/ahastudio/fastcampus-eatgo)
+
 “Fast Campus 올인원 패키지: Java 웹 개발 마스터” 실전 프로젝트.
 
 ## Test all
