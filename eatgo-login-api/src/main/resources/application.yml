@@ -1,0 +1,25 @@
+spring:
+  datasource:
+    url: jdbc:h2:~/data/eatgo
+  jpa:
+    hibernate:
+      ddl-auto: update
+
+jwt:
+  secret: 12345678901234567890123456789012
+
+---
+
+spring:
+  profiles: test
+  datasource:
+    url: jdbc:h2:mem:test
+
+---
+
+spring:
+  profiles: mysql
+  datasource:
+    url: jdbc:mysql://${MYSQL_HOST}:3306/${MYSQL_DATABASE}
+    username: ${MYSQL_USER}
+    password: ${MYSQL_PASSWORD}
