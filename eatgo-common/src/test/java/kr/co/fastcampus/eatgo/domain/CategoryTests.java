@@ -2,8 +2,7 @@ package kr.co.fastcampus.eatgo.domain;
 
 import org.junit.Test;
 
-import static org.hamcrest.core.Is.is;
-import static org.junit.Assert.assertThat;
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class CategoryTests {
 
@@ -11,7 +10,7 @@ public class CategoryTests {
     public void creation() {
         Category category = Category.builder().name("Korean Food").build();
 
-        assertThat(category.getName(), is("Korean Food"));
+        assertThat(category.getName()).isEqualTo("Korean Food");
     }
 
 }

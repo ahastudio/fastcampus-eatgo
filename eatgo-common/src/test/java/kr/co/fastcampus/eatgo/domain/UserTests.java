@@ -2,8 +2,7 @@ package kr.co.fastcampus.eatgo.domain;
 
 import org.junit.Test;
 
-import static org.hamcrest.core.Is.is;
-import static org.junit.Assert.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class UserTests {
 
@@ -15,25 +14,25 @@ public class UserTests {
                 .level(100L)
                 .build();
 
-        assertThat(user.getName(), is("테스터"));
-        assertThat(user.isAdmin(), is(true));
-        assertThat(user.isActive(), is(true));
+        assertThat(user.getName()).isEqualTo("테스터");
+        assertThat(user.isAdmin()).isTrue();
+        assertThat(user.isActive()).isTrue();
 
         user.deativate();
 
-        assertThat(user.isActive(), is(false));
+        assertThat(user.isActive()).isFalse();
     }
 
     @Test
     public void restaurantOwner() {
         User user = User.builder().level(1L).build();
 
-        assertThat(user.isRestaurantOwner(), is(false));
+        assertThat(user.isRestaurantOwner()).isFalse();
 
         user.setRestaurantId(1004L);
 
-        assertThat(user.isRestaurantOwner(), is(true));
-        assertThat(user.getRestaurantId(), is(1004L));
+        assertThat(user.isRestaurantOwner()).isTrue();
+        assertThat(user.getRestaurantId()).isEqualTo(1004L);
     }
 
 }

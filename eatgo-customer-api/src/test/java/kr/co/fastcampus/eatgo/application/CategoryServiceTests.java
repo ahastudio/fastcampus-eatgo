@@ -10,8 +10,7 @@ import org.mockito.MockitoAnnotations;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.hamcrest.core.Is.is;
-import static org.junit.Assert.assertThat;
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.BDDMockito.given;
 
 public class CategoryServiceTests {
@@ -38,7 +37,7 @@ public class CategoryServiceTests {
         List<Category> categories = categoryService.getCategories();
 
         Category category = categories.get(0);
-        assertThat(category.getName(), is("Korean Food"));
+        assertThat(category.getName()).isEqualTo("Korean Food");
     }
 
 }

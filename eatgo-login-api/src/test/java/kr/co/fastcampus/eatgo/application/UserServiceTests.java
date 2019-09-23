@@ -11,7 +11,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import java.util.Optional;
 
 import static org.hamcrest.core.Is.is;
-import static org.junit.Assert.assertThat;
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.never;
@@ -48,7 +48,7 @@ public class UserServiceTests {
 
         User user = userService.authenticate(email, password);
 
-        assertThat(user.getEmail(), is(email));
+        assertThat(user.getEmail()).isEqualTo(email);
     }
 
     @Test(expected = EmailNotExistedException.class)

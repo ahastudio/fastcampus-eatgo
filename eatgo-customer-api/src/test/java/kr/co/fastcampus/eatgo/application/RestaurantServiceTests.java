@@ -10,8 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-import static org.hamcrest.core.Is.is;
-import static org.junit.Assert.assertThat;
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.BDDMockito.given;
@@ -92,7 +91,7 @@ public class RestaurantServiceTests {
 
         Restaurant restaurant = restaurants.get(0);
 
-        assertThat(restaurant.getId(), is(1004L));
+        assertThat(restaurant.getId()).isEqualTo(1004L);
     }
 
     @Test
@@ -102,15 +101,15 @@ public class RestaurantServiceTests {
         verify(menuItemRepository).findAllByRestaurantId(eq(1004L));
         verify(reviewRepository).findAllByRestaurantId(eq(1004L));
 
-        assertThat(restaurant.getId(), is(1004L));
+        assertThat(restaurant.getId()).isEqualTo(1004L);
 
         MenuItem menuItem = restaurant.getMenuItems().get(0);
 
-        assertThat(menuItem.getName(), is("Kimchi"));
+        assertThat(menuItem.getName()).isEqualTo("Kimchi");
 
         Review review = restaurant.getReviews().get(0);
 
-        assertThat(review.getDescription(), is("Bad"));
+        assertThat(review.getDescription()).isEqualTo("Bad");
     }
 
     @Test(expected = RestaurantNotFoundException.class)
@@ -134,7 +133,7 @@ public class RestaurantServiceTests {
 
         Restaurant created = restaurantService.addRestaurant(restaurant);
 
-        assertThat(created.getId(), is(1234L));
+        assertThat(created.getId()).isEqualTo(1234L);
     }
 
     @Test
@@ -151,9 +150,9 @@ public class RestaurantServiceTests {
 
         restaurantService.updateRestaurant(1004L, 2L, "Sool zip", "Busan");
 
-        assertThat(restaurant.getCategoryId(), is(2L));
-        assertThat(restaurant.getName(), is("Sool zip"));
-        assertThat(restaurant.getAddress(), is("Busan"));
+        assertThat(restaurant.getCategoryId()).isEqualTo(2L);
+        assertThat(restaurant.getName()).isEqualTo("Sool zip");
+        assertThat(restaurant.getAddress()).isEqualTo("Busan");
     }
 
 }

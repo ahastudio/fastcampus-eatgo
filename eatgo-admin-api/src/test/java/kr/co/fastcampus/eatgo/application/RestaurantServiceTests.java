@@ -1,6 +1,8 @@
 package kr.co.fastcampus.eatgo.application;
 
-import kr.co.fastcampus.eatgo.domain.*;
+import kr.co.fastcampus.eatgo.domain.Restaurant;
+import kr.co.fastcampus.eatgo.domain.RestaurantNotFoundException;
+import kr.co.fastcampus.eatgo.domain.RestaurantRepository;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
@@ -10,8 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-import static org.hamcrest.core.Is.is;
-import static org.junit.Assert.assertThat;
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.BDDMockito.given;
 
@@ -53,14 +54,14 @@ public class RestaurantServiceTests {
 
         Restaurant restaurant = restaurants.get(0);
 
-        assertThat(restaurant.getId(), is(1004L));
+        assertThat(restaurant.getId()).isEqualTo(1004L);
     }
 
     @Test
     public void getRestaurantWithExisted() {
         Restaurant restaurant = restaurantService.getRestaurant(1004L);
 
-        assertThat(restaurant.getId(), is(1004L));
+        assertThat(restaurant.getId()).isEqualTo(1004L);
     }
 
     @Test(expected = RestaurantNotFoundException.class)
@@ -83,7 +84,7 @@ public class RestaurantServiceTests {
 
         Restaurant created = restaurantService.addRestaurant(restaurant);
 
-        assertThat(created.getId(), is(1234L));
+        assertThat(created.getId()).isEqualTo(1234L);
     }
 
     @Test
@@ -99,7 +100,7 @@ public class RestaurantServiceTests {
 
         restaurantService.updateRestaurant(1004L, 1L, "Sool zip", "Busan");
 
-        assertThat(restaurant.getName(), is("Sool zip"));
-        assertThat(restaurant.getAddress(), is("Busan"));
+        assertThat(restaurant.getName()).isEqualTo("Sool zip");
+        assertThat(restaurant.getAddress()).isEqualTo("Busan");
     }
 }

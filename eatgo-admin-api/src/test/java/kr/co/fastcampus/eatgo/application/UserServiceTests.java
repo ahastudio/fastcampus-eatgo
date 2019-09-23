@@ -11,8 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-import static org.hamcrest.core.Is.is;
-import static org.junit.Assert.assertThat;
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.BDDMockito.given;
@@ -47,7 +46,7 @@ public class UserServiceTests {
 
         User user = users.get(0);
 
-        assertThat(user.getName(), is("테스터"));
+        assertThat(user.getName()).isEqualTo("테스터");
     }
 
     @Test
@@ -61,7 +60,7 @@ public class UserServiceTests {
 
         User user = userService.addUser(email, name);
 
-        assertThat(user.getName(), is(name));
+        assertThat(user.getName()).isEqualTo(name);
     }
 
     @Test
@@ -83,8 +82,8 @@ public class UserServiceTests {
 
         verify(userRepositoy).findById(eq(id));
 
-        assertThat(user.getName(), is("Superman"));
-        assertThat(user.isAdmin(), is(true));
+        assertThat(user.getName()).isEqualTo("Superman");
+        assertThat(user.isAdmin()).isTrue();
     }
 
     @Test
@@ -104,8 +103,8 @@ public class UserServiceTests {
 
         verify(userRepositoy).findById(1004L);
 
-        assertThat(user.isAdmin(), is(false));
-        assertThat(user.isActive(), is(false));
+        assertThat(user.isAdmin()).isFalse();
+        assertThat(user.isActive()).isFalse();
     }
 
 }
