@@ -10,11 +10,8 @@ import org.mockito.MockitoAnnotations;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.hamcrest.core.Is.is;
-import static org.junit.Assert.assertThat;
-import static org.mockito.ArgumentMatchers.any;
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.BDDMockito.given;
-import static org.mockito.Mockito.verify;
 
 public class ReviewServiceTests {
 
@@ -41,7 +38,7 @@ public class ReviewServiceTests {
 
         Review review = reviews.get(0);
 
-        assertThat(review.getDescription(), is("Cool!"));
+        assertThat(review.getDescription()).isEqualTo("Cool!");
     }
 
 }

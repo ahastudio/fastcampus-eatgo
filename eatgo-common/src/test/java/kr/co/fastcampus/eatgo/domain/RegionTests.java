@@ -2,8 +2,7 @@ package kr.co.fastcampus.eatgo.domain;
 
 import org.junit.Test;
 
-import static org.hamcrest.core.Is.is;
-import static org.junit.Assert.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class RegionTests {
 
@@ -11,7 +10,7 @@ public class RegionTests {
     public void creation() {
         Region region = Region.builder().name("서울").build();
 
-        assertThat(region.getName(), is("서울"));
+        assertThat(region.getName()).isEqualTo("서울");
     }
 
 }

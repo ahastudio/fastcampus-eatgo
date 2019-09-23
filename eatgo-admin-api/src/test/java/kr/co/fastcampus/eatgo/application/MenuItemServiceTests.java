@@ -10,8 +10,7 @@ import org.mockito.MockitoAnnotations;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.hamcrest.core.Is.is;
-import static org.junit.Assert.assertThat;
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.BDDMockito.given;
@@ -44,7 +43,7 @@ public class MenuItemServiceTests {
 
         MenuItem menuItem = menuItems.get(0);
 
-        assertThat(menuItem.getName(), is("Kimchi"));
+        assertThat(menuItem.getName()).isEqualTo("Kimchi");
     }
 
     @Test

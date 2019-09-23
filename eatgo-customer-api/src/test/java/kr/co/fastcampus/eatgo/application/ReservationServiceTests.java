@@ -2,14 +2,12 @@ package kr.co.fastcampus.eatgo.application;
 
 import kr.co.fastcampus.eatgo.domain.Reservation;
 import kr.co.fastcampus.eatgo.domain.ReservationRepository;
-import kr.co.fastcampus.eatgo.domain.Restaurant;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
-import static org.hamcrest.core.Is.is;
-import static org.junit.Assert.assertThat;
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.verify;
@@ -45,7 +43,7 @@ public class ReservationServiceTests {
         Reservation reservation = reservationService.addReservation(
                 restaurantId, userId, name, date, time, partySize);
 
-        assertThat(reservation.getName(), is(name));
+        assertThat(reservation.getName()).isEqualTo(name);
 
         verify(reservationRepository).save(any(Reservation.class));
     }
