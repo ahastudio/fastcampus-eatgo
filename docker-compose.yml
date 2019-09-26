@@ -67,7 +67,7 @@ services:
     environment:
       - VUE_APP_API_BASE_URL=http://localhost:8002
       - VUE_APP_LOGIN_API_BASE_URL=http://localhost:8001
-    command: bash -c "cd /home/eatgo && npm run serve"
+    command: bash -c "cd /home/eatgo && npm install && npm run serve"
     healthcheck:
       test: curl -sS http://localhost:8080 || exit 1
       timeout: 10s
@@ -81,7 +81,7 @@ services:
     environment:
       - VUE_APP_API_BASE_URL=http://localhost:8003
       - VUE_APP_LOGIN_API_BASE_URL=http://localhost:8001
-    command: bash -c "cd /home/eatgo && npm run serve"
+    command: bash -c "cd /home/eatgo && npm install && npm run serve"
     healthcheck:
       test: curl -sS http://localhost:8080 || exit 1
       timeout: 10s
@@ -95,7 +95,7 @@ services:
     environment:
       - VUE_APP_API_BASE_URL=http://localhost:8004
       - VUE_APP_LOGIN_API_BASE_URL=http://localhost:8001
-    command: bash -c "cd /home/eatgo && npm run serve"
+    command: bash -c "cd /home/eatgo && npm install && npm run serve"
     healthcheck:
       test: curl -sS http://localhost:8080 || exit 1
       timeout: 10s
