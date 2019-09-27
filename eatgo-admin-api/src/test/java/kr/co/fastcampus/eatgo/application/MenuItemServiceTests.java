@@ -4,6 +4,7 @@ import kr.co.fastcampus.eatgo.domain.MenuItem;
 import kr.co.fastcampus.eatgo.domain.MenuItemRepository;
 import org.junit.Before;
 import org.junit.Test;
+import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
@@ -19,6 +20,7 @@ import static org.mockito.Mockito.verify;
 
 public class MenuItemServiceTests {
 
+    @InjectMocks
     private MenuItemService menuItemService;
 
     @Mock
@@ -27,8 +29,6 @@ public class MenuItemServiceTests {
     @Before
     public void setUp() {
         MockitoAnnotations.initMocks(this);
-
-        menuItemService = new MenuItemService(menuItemRepository);
     }
 
     @Test

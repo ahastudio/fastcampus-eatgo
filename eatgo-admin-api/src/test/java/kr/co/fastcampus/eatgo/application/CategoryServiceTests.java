@@ -4,6 +4,7 @@ import kr.co.fastcampus.eatgo.domain.Category;
 import kr.co.fastcampus.eatgo.domain.CategoryRepository;
 import org.junit.Before;
 import org.junit.Test;
+import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
@@ -17,6 +18,7 @@ import static org.mockito.Mockito.verify;
 
 public class CategoryServiceTests {
 
+    @InjectMocks
     private CategoryService categoryService;
 
     @Mock
@@ -25,8 +27,6 @@ public class CategoryServiceTests {
     @Before
     public void setUp() {
         MockitoAnnotations.initMocks(this);
-
-        categoryService = new CategoryService(categoryRepository);
     }
 
     @Test

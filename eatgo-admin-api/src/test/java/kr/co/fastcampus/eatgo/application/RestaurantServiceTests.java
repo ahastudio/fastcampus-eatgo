@@ -5,6 +5,7 @@ import kr.co.fastcampus.eatgo.domain.RestaurantNotFoundException;
 import kr.co.fastcampus.eatgo.domain.RestaurantRepository;
 import org.junit.Before;
 import org.junit.Test;
+import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
@@ -18,6 +19,7 @@ import static org.mockito.BDDMockito.given;
 
 public class RestaurantServiceTests {
 
+    @InjectMocks
     private RestaurantService restaurantService;
 
     @Mock
@@ -28,8 +30,6 @@ public class RestaurantServiceTests {
         MockitoAnnotations.initMocks(this);
 
         mockRestaurantRepository();
-
-        restaurantService = new RestaurantService(restaurantRepository);
     }
 
     private void mockRestaurantRepository() {

@@ -4,6 +4,7 @@ import kr.co.fastcampus.eatgo.domain.Reservation;
 import kr.co.fastcampus.eatgo.domain.ReservationRepository;
 import org.junit.Before;
 import org.junit.Test;
+import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
@@ -14,6 +15,7 @@ import static org.mockito.Mockito.verify;
 
 public class ReservationServiceTests {
 
+    @InjectMocks
     private ReservationService reservationService;
 
     @Mock
@@ -22,8 +24,6 @@ public class ReservationServiceTests {
     @Before
     public void setUp() {
         MockitoAnnotations.initMocks(this);
-
-        reservationService = new ReservationService(reservationRepository);
     }
 
     @Test
