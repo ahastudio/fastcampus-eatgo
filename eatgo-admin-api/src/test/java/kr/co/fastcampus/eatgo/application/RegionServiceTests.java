@@ -4,6 +4,7 @@ import kr.co.fastcampus.eatgo.domain.Region;
 import kr.co.fastcampus.eatgo.domain.RegionRepository;
 import org.junit.Before;
 import org.junit.Test;
+import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
@@ -17,6 +18,7 @@ import static org.mockito.Mockito.verify;
 
 public class RegionServiceTests {
 
+    @InjectMocks
     private RegionService regionService;
 
     @Mock
@@ -25,8 +27,6 @@ public class RegionServiceTests {
     @Before
     public void setUp() {
         MockitoAnnotations.initMocks(this);
-
-        regionService = new RegionService(regionRepository);
     }
 
     @Test

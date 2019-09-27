@@ -3,6 +3,7 @@ package kr.co.fastcampus.eatgo.application;
 import kr.co.fastcampus.eatgo.domain.*;
 import org.junit.Before;
 import org.junit.Test;
+import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
@@ -18,6 +19,7 @@ import static org.mockito.Mockito.verify;
 
 public class RestaurantServiceTests {
 
+    @InjectMocks
     private RestaurantService restaurantService;
 
     @Mock
@@ -36,9 +38,6 @@ public class RestaurantServiceTests {
         mockRestaurantRepository();
         mockMenuItemRepository();
         mockReviewRepository();
-
-        restaurantService = new RestaurantService(
-                restaurantRepository, menuItemRepository, reviewRepository);
     }
 
     private void mockRestaurantRepository() {
