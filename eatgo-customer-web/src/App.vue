@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex';
+import { mapState } from 'vuex';
 
 import store from './store';
 
@@ -16,11 +16,11 @@ export default {
   name: 'my-app',
   components: { GlobalNavigator },
   store,
-  methods: {
-    ...mapActions(['loadAccessToken']),
-  },
-  created() {
-    this.loadAccessToken();
+  computed: { ...mapState(['accessToken']) },
+  watch: {
+    accessToken() {
+      this.$router.go('/');
+    },
   },
 };
 </script>

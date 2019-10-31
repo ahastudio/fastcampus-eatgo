@@ -7,11 +7,19 @@ import {
 const { log: print } = console;
 
 export default {
-  loadAccessToken({ commit }) {
-    const accessToken = localStorage.getItem('accessToken') || '';
+  setAccessToken({ commit }, { accessToken }) {
     commit('setAccessToken', accessToken);
 
     useAccessToken(accessToken);
+
+    localStorage.setItem('accessToken', accessToken);
+  },
+  clearAccessToken({ commit }) {
+    commit('setAccessToken', '');
+
+    useAccessToken('');
+
+    localStorage.removeItem('accessToken');
   },
   async createSession({ commit }, { email, password, success }) {
     const { accessToken } = await loginPost('/session', { email, password });

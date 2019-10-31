@@ -9,7 +9,7 @@
       <input type="password" class="form-control" v-model="password">
     </div>
     <div class="form-group">
-      <button type="button" class="btn btn-primary" @click="submit">
+      <button type="button" class="btn btn-primary" @click.prevent="submit">
         로그인
       </button>
     </div>
@@ -42,3 +42,9 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+.login-page {
+  padding: 40px;
+}
+</style>
