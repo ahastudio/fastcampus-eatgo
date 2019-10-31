@@ -16,15 +16,26 @@
           Log in
         </router-link>
       </li>
+      <li class="nav-item" v-if="accessToken">
+        <a href="#" class="nav-link" @click.prevent="logout">
+          Log out
+        </a>
+      </li>
     </ul>
   </nav>
 </template>
 
 <script>
-import { mapState } from 'vuex';
+import { mapState, mapActions } from 'vuex';
 
 export default {
   name: 'global-navigator',
   computed: { ...mapState(['accessToken']) },
+  methods: {
+    ...mapActions(['clearAccessToken']),
+    logout() {
+      this.clearAccessToken();
+    },
+  },
 };
 </script>

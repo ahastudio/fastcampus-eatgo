@@ -23,13 +23,9 @@ import { mapState, mapActions } from 'vuex';
 
 export default {
   name: 'home',
-  computed: { ...mapState(['accessToken', 'categories']) },
+  computed: { ...mapState(['categories']) },
   methods: { ...mapActions(['loadCategories']) },
   mounted() {
-    if (!this.accessToken) {
-      this.$router.push('/login');
-      return;
-    }
     this.loadCategories();
   },
 };
