@@ -2,8 +2,8 @@ package kr.co.fastcampus.eatgo.application;
 
 import kr.co.fastcampus.eatgo.domain.User;
 import kr.co.fastcampus.eatgo.domain.UserRepository;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
@@ -11,6 +11,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.util.Optional;
 
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.never;
@@ -27,7 +28,7 @@ public class UserServiceTests {
     @Mock
     private PasswordEncoder passwordEncoder;
 
-    @Before
+    @BeforeEach
     public void setUp() {
         MockitoAnnotations.initMocks(this);
     }
@@ -43,7 +44,7 @@ public class UserServiceTests {
         verify(userRepostory).save(any());
     }
 
-    @Test(expected = EmailExistedException.class)
+    @Test
     public void registerUserWithExistedEmail() {
         String email = "tester@example.com";
         String name = "Tester";
@@ -52,7 +53,9 @@ public class UserServiceTests {
         User user = User.builder().build();
         given(userRepostory.findByEmail(email)).willReturn(Optional.of(user));
 
-        userService.registerUser(email, name, password);
+        assertThatThrownBy(() -> {
+            userService.registerUser(email, name, password);
+        }).isInstanceOf(EmailExistedException.class);
 
         verify(userRepostory, never()).save(any());
     }

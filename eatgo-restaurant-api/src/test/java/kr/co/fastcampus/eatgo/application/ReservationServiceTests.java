@@ -2,8 +2,8 @@ package kr.co.fastcampus.eatgo.application;
 
 import kr.co.fastcampus.eatgo.domain.Reservation;
 import kr.co.fastcampus.eatgo.domain.ReservationRepository;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
@@ -20,7 +20,7 @@ public class ReservationServiceTests {
     @Mock
     private ReservationRepository reservationRepository;
 
-    @Before
+    @BeforeEach
     public void setUp() {
         MockitoAnnotations.initMocks(this);
     }

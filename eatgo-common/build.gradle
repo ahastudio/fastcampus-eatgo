@@ -1,9 +1,8 @@
 plugins {
-    id 'org.springframework.boot' version '2.1.5.RELEASE'
+    id 'org.springframework.boot' version '2.2.1.RELEASE'
+    id 'io.spring.dependency-management' version '1.0.8.RELEASE'
     id 'java'
 }
-
-apply plugin: 'io.spring.dependency-management'
 
 group = 'kr.co.fastcampus'
 version = '0.0.1-SNAPSHOT'
@@ -48,4 +47,8 @@ jar {
 
 bootJar {
     enabled = false
+}
+
+test {
+    useJUnitPlatform()
 }

@@ -2,8 +2,8 @@ package kr.co.fastcampus.eatgo.application;
 
 import kr.co.fastcampus.eatgo.domain.User;
 import kr.co.fastcampus.eatgo.domain.UserRepository;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
@@ -12,6 +12,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.BDDMockito.given;
 
@@ -26,7 +27,7 @@ public class UserServiceTests {
     @Mock
     private PasswordEncoder passwordEncoder;
 
-    @Before
+    @BeforeEach
     public void setUp() {
         MockitoAnnotations.initMocks(this);
     }
@@ -48,7 +49,7 @@ public class UserServiceTests {
         assertThat(user.getEmail()).isEqualTo(email);
     }
 
-    @Test(expected = EmailNotExistedException.class)
+    @Test
     public void authenticateWithNotExistedEmail() {
         String email = "x@example.com";
         String password = "test";
@@ -56,10 +57,12 @@ public class UserServiceTests {
         given(userRepostory.findByEmail(email))
                 .willReturn(Optional.empty());
 
-        userService.authenticate(email, password);
+        assertThatThrownBy(() -> {
+            userService.authenticate(email, password);
+        }).isInstanceOf(EmailNotExistedException.class);
     }
 
-    @Test(expected = PasswordWrongException.class)
+    @Test
     public void authenticateWithWrongPassword() {
         String email = "tester@example.com";
         String password = "x";
@@ -71,7 +74,9 @@ public class UserServiceTests {
 
         given(passwordEncoder.matches(any(), any())).willReturn(false);
 
-        userService.authenticate(email, password);
+        assertThatThrownBy(() -> {
+            userService.authenticate(email, password);
+        }).isInstanceOf(PasswordWrongException.class);
     }
 
 }
